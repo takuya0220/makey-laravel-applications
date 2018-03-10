@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/wagaya', function () {
+    return view('wagaya');
+});
