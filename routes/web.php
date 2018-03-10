@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/wagaya', function () {
-    return view('wagaya');
-});
+Route::get('/{any}', function () {
+    return view('layouts.app');
+})->where('any', '.*');

@@ -18,7 +18,7 @@
     </head>
     <body>
         <div id="app">
-            <example-component></example-component>
+            <wagaya-component></wagaya-component>
         </div>
     </body>
     <script src="{{ asset(mix('js/manifest.js')) }}"></script>

@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -7,7 +6,8 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +16,22 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('wagaya-component', require('./components/Wagaya/index.vue'));
 
-const app = new Vue({
-    el: '#app'
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        // TOPページ
+        {
+            path: '/',
+            component: require('./components/ExampleComponent.vue')
+        },
+        // 我が家
+        {
+            path: '/wagaya',
+            component: require('./components/Wagaya/index.vue')
+        }
+    ]
 });
+
+const app = new Vue({router, el: '#app'});
