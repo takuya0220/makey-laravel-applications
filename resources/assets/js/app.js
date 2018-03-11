@@ -9,6 +9,17 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import VueMoment from 'vue-moment'
+import moment from 'moment-timezone'
+Vue.use(VueMoment, {
+    moment,
+})
+
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
+Vue.use(datePicker);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

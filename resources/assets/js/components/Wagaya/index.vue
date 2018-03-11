@@ -9,8 +9,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputYM">年月</label>
-                        <input type="text" v-model="searchYM" class="form-control" id="inputYM" aria-describedby="ymHelp" placeholder="年月を入力してください">
-                        <small id="ymHelp" class="form-text text-muted">年月を入力してください</small>
+                        <date-picker v-model="dateYM" :config="config"></date-picker>
                     </div>
                     <button v-on:click="handleSearch" class="btn btn-primary">検索</button>
                 </div>
@@ -44,43 +43,40 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
     data() {
         return {
-            items: [{
-                ym: '2018年3月',
-                day: '3',
-                name: 'テスト'
-            }],
-            searchYM: null
+            dateYM: Vue.moment().format('YYYY年M月'),
+            config: {
+                format: 'YYYY年M月',
+                useCurrent: true,
+            },
+            items: []
         }
     },
     created() {
-        // view が作られた時にデータを取得し、
-        // そのデータは既に監視されています
-        this.fetchData()
-    },
-    watch: {
-        // ルートが変更されたらこのメソッドを再び呼び出します
-        '$route': 'fetchData'
+        this.handleSearch();
     },
     methods: {
-        fetchData() {
-
-        },
-        handleSearch: function() {
-            axios.get('http://localhost:3000/wagaya', {
+        handleSearch: async function() {
+            var vm = this;
+            var dateYM = this.dateYM;
+            await axios.get('http://localhost:3000/wagaya', {
                     params: {
-                        ID: this.searchYM
+                        ym: dateYM
+                    },
+                    headers: {
+                        'Access-Control-Allow-Credentials': true
                     }
                 })
                 .then(function(response) {
-                    console.log(response);
+                    vm.items = response.data;
                 })
                 .catch(function(error) {
                     console.log(error);
                 });
-            console.log(this, this.searchYM);
         }
     }
 }
