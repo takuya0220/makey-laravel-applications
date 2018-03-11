@@ -59295,7 +59295,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 vm = this;
                                 dateYM = this.dateYM;
                                 _context.next = 4;
-                                return axios.get('http://localhost:3000/wagaya', {
+                                return axios.get('https://makey-nodejs-applications.herokuapp.com/wagaya', {
                                     params: {
                                         ym: dateYM
                                     },
