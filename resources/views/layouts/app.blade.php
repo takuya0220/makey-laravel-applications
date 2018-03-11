@@ -8,7 +8,7 @@
 
         <title>Laravel</title>
 
-        <link rel="stylesheet" href="{{ asset(mix('css/app.css')) }}"></script>
+        <link rel="stylesheet" href="{{ secure_asset(mix('css/app.css')) }}"></script>
 
         <script>
             window.Laravel = {
@@ -21,7 +21,7 @@
             <wagaya-component></wagaya-component>
         </div>
     </body>
-    <script src="{{ asset(mix('js/manifest.js')) }}"></script>
-    <script src="{{ asset(mix('js/vendor.js')) }}"></script>
-    <script src="{{ asset(mix('js/app.js')) }}"></script>
+    <script src="{{ secure_asset(mix('js/manifest.js')) }}"></script>
+    <script src="{{ secure_asset(mix('js/vendor.js')) }}"></script>
+    <script src="{{ secure_asset(mix('js/app.js')) }}"></script>
 </html>
