@@ -11,6 +11,6 @@
 |
 */
 
-Route::match(['get', 'post', 'put', 'patch', 'delete', 'options'], '/{any}', function () {
+Route::get('/{any}', function () {
     return view('layouts.app');
 })->where('any', '.*');
