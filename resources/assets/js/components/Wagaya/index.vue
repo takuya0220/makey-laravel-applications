@@ -63,7 +63,7 @@ export default {
         handleSearch: async function() {
             var vm = this;
             var dateYM = this.dateYM;
-            await axios.get('http://localhost:3000/wagaya', {
+            await axios.get('https://makey-nodejs-applications.herokuapp.com/wagaya', {
                     params: {
                         ym: dateYM
                     },
