@@ -7,18 +7,22 @@
 require('./bootstrap');
 
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+import { Navbar } from 'bootstrap-vue/es/components';
 import VueRouter from 'vue-router'
-
+import underscore from 'vue-underscore';
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
-Vue.use(VueMoment, {
-    moment,
-})
-
 import datePicker from 'vue-bootstrap-datetimepicker';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
 import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
+
+Vue.use(underscore);
+Vue.use(VueRouter);
+Vue.use(VueMoment, {moment})
+Vue.use(BootstrapVue);
 Vue.use(datePicker);
+Vue.use(Navbar);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -42,7 +46,9 @@ const router = new VueRouter({
             path: '/wagaya',
             component: require('./components/Wagaya/index.vue')
         }
-    ]
+    ],
+    base: '/makey-laravel-applications/public',
+    linkActiveClass: ''
 });
-
+const sidebar = new Vue({router, el: '#sidebar'});
 const app = new Vue({router, el: '#app'});
